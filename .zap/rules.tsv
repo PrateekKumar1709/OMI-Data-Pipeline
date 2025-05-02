@@ -1,0 +1,32 @@
+# ZAP Baseline Rules
+# Format: Rule ID	Risk	Confidence	URL	Parameter	Evidence	Other Info	Solution
+10016	High	High	.*	.*	.*	.*	.*
+10020	High	High	.*	.*	.*	.*	.*
+10021	High	High	.*	.*	.*	.*	.*
+10023	High	High	.*	.*	.*	.*	.*
+10024	High	High	.*	.*	.*	.*	.*
+10026	High	High	.*	.*	.*	.*	.*
+10027	High	High	.*	.*	.*	.*	.*
+10028	High	High	.*	.*	.*	.*	.*
+10029	High	High	.*	.*	.*	.*	.*
+10030	High	High	.*	.*	.*	.*	.*
+10031	High	High	.*	.*	.*	.*	.*
+10032	High	High	.*	.*	.*	.*	.*
+10033	High	High	.*	.*	.*	.*	.*
+10034	High	High	.*	.*	.*	.*	.*
+10035	High	High	.*	.*	.*	.*	.*
+10036	High	High	.*	.*	.*	.*	.*
+10037	High	High	.*	.*	.*	.*	.*
+10038	High	High	.*	.*	.*	.*	.*
+10039	High	High	.*	.*	.*	.*	.*
+10040	High	High	.*	.*	.*	.*	.*
+10041	High	High	.*	.*	.*	.*	.*
+10042	High	High	.*	.*	.*	.*	.*
+10043	High	High	.*	.*	.*	.*	.*
+10044	High	High	.*	.*	.*	.*	.*
+10045	High	High	.*	.*	.*	.*	.*
+10046	High	High	.*	.*	.*	.*	.*
+10047	High	High	.*	.*	.*	.*	.*
+10048	High	High	.*	.*	.*	.*	.*
+10049	High	High	.*	.*	.*	.*	.*
+10050	High	High	.*	.*	.*	.*	.* 
