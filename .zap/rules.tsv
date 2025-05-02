@@ -1,8 +1,7 @@
-10016	IGNORE	# Cookie Without SameSite Attribute
-10020	IGNORE	# X-Frame-Options Header
-10021	IGNORE	# X-Content-Type-Options Header Missing
-10036	IGNORE	# Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)
-10098	IGNORE	# Content Security Policy (CSP) Header Not Set
-10109	IGNORE	# Application Error Disclosure
-10129	IGNORE	# Modern Web Application
-10135	IGNORE	# Strict Transport Security Header
+# SPDX-License-Identifier: Apache-2.0
+# OWASP ZAP Custom Rules
+# Format: Rule ID	Risk	Confidence	URL	Parameter	Evidence	Other Info
+10016	FALSE	FALSE	.*	.*	.*	# Ignore "Web Browser XSS Protection Not Enabled" for development environments
+10020	FALSE	FALSE	.*	.*	.*	# Ignore "X-Frame-Options Header" for development environments
+10021	FALSE	FALSE	.*	.*	.*	# Ignore "X-Content-Type-Options Header Missing" for development environments
+10036	FALSE	FALSE	.*	.*	.*	# Ignore "Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)" for development environments 
