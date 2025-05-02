@@ -20,23 +20,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 9.15.5
+      - name: Set up Docker Compose
+        run: sudo apt-get update && sudo apt-get install -y docker-compose
 
       - name: Start Frontend Service
+        run: docker-compose up -d odr-frontend
+
+      - name: Wait for Frontend to be Ready
         run: |
-          cd modules/odr_frontend
-          pnpm install
-          pnpm run dev &
-          # Wait for the service to be ready
-          sleep 30
+          for i in {1..30}; do
+            nc -z localhost 5173 && echo "Frontend up!" && exit 0
+            echo "Waiting for frontend..."
+            sleep 2
+          done
+          echo "Frontend did not start in time" && exit 1
 
       - name: OWASP ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.12.0
@@ -45,8 +42,6 @@ jobs:
           rules_file_name: '.zap/rules.tsv'  # Custom rules file
           cmd_options: '-a'  # Run in automated mode
           fail_action: WARN  # Don't fail the build on warnings
-          scan_level: MEDIUM  # Set scan level to MEDIUM
-          threshold: MEDIUM  # Only fail on MEDIUM or higher issues
 
       - name: Upload ZAP Scan Results
         uses: actions/upload-artifact@v4
@@ -56,6 +51,6 @@ jobs:
           path: zap-results/
           retention-days: 30
 
-      - name: Stop Frontend Service
+      - name: Stop Application
         if: always()
-        run: pkill -f "pnpm run dev" 
+        run: docker-compose down 
