@@ -18,10 +18,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Start Application
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9.15.5
+
+      - name: Start Frontend Service
         run: |
-          docker-compose up -d
-          # Wait for the application to be ready
+          cd modules/odr_frontend
+          pnpm install
+          pnpm run dev &
+          # Wait for the service to be ready
           sleep 30
 
       - name: OWASP ZAP Baseline Scan
@@ -42,6 +54,6 @@ jobs:
           path: zap-results/
           retention-days: 30
 
-      - name: Stop Application
+      - name: Stop Frontend Service
         if: always()
-        run: docker-compose down 
+        run: pkill -f "pnpm run dev" 
