@@ -1,5 +1,4 @@
 # SPDX-License-Identifier: Apache-2.0
-# Test workflow for OWASP ZAP scanning
 name: OWASP ZAP Security Scan
 
 on:
